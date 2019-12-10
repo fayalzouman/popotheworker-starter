@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import TodayList from "./Components/TodayList";
 
 class App extends Component {
   state = {
@@ -23,7 +24,11 @@ class App extends Component {
         {task.title} - {task.details}
       </p>
     ));
-    return <div className="App">{tasks_list}</div>;
+    return (
+      <div className="App">
+        <TodayList tasks={this.state.tasks} />
+      </div>
+    );
   }
 }
 
