@@ -4,7 +4,7 @@ import tasksStore from "../../Stores/TasksStore";
 import { observer } from "mobx-react";
 import { MDBListGroup } from "mdbreact";
 
-class TodayList extends Component {
+class FutureList extends Component {
   render() {
     let tasks = tasksStore.futureTasks.map(task => (
       <Task task={task} key={task.title} />
@@ -18,4 +18,4 @@ class TodayList extends Component {
   }
 }
 
-export default observer(TodayList);
+export default observer(FutureList);
