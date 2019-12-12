@@ -8,17 +8,38 @@ class TasksStore {
       title: "Eat a banana",
       details: "Find a banana. Eat it.",
       due: moment(),
-      id: 1
+      id: 1,
+      labels: [
+        {
+          value: "Monkey Stuff",
+          label: "Monkey Stuff"
+        },
+        {
+          value: "Banana",
+          label: "Banana"
+        }
+      ]
     },
     {
       title: "Tell The Monkey to get off his monkey butt and do something.",
       details: "",
       due: moment(),
-      id: 2
+      id: 2,
+      labels: [
+        {
+          value: "Monkey Stuff",
+          label: "Monkey Stuff"
+        },
+        {
+          value: "Banana",
+          label: "Banana"
+        }
+      ]
     }
   ];
   doneTasks = [];
   futureTasks = [];
+  labelOptions = ["Personal", "Work", "Monkey Stuff"];
 
   updateLocalStorage = () => {
     // This next line will stringify the tasks list
@@ -27,7 +48,8 @@ class TasksStore {
       todayTasks: this.todayTasks,
       futureTasks: this.futureTasks,
       done: this.doneTasks,
-      idCounter: this.idCounter
+      idCounter: this.idCounter,
+      labels: this.labelOptions
     });
     localStorage.setItem("tasks", tasks);
   };
@@ -49,14 +71,16 @@ class TasksStore {
       this.futureTasks = tasks.futureTasks;
       this.doneTasks = tasks.done;
       this.idCounter = tasks.idCounter;
+      this.labelOptions = tasks.labels;
     }
   };
 
-  addTask = (title, details, due) => {
+  addTask = (title, details, due, labels) => {
     let newTask = {
       title: title,
       details: details,
       due: due,
+      labels: labels,
       id: this.idCounter
     };
     this.idCounter++;

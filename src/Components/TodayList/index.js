@@ -11,7 +11,7 @@ class TodayList extends Component {
     ));
     return (
       <div>
-        <h3>Future</h3>
+        <h3>Today</h3>
         <MDBListGroup>{tasks}</MDBListGroup>
       </div>
     );

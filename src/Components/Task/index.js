@@ -9,7 +9,8 @@ import {
   MDBModalBody,
   MDBModalHeader,
   MDBModalFooter,
-  MDBIcon
+  MDBIcon,
+  MDBBadge
 } from "mdbreact";
 
 class Task extends Component {
@@ -30,6 +31,16 @@ class Task extends Component {
     let dueDate;
     if (this.props.task.due)
       dueDate = <small>{this.props.task.due.fromNow()}</small>;
+    let labels;
+    if (this.props.task.labels && this.props.task.labels.length > 0) {
+      labels = this.props.task.labels.map(label => {
+        return (
+          <MDBBadge pill color="primary" className="mr-2">
+            {label.label}
+          </MDBBadge>
+        );
+      });
+    }
     return (
       <MDBListGroupItem>
         <MDBModal
@@ -66,6 +77,8 @@ class Task extends Component {
         </MDBModal>
         <div className="d-flex justify-content-between">
           <div className="d-flex align-items-start flex-column">
+            <div className="flex-row">{labels}</div>
+
             <div className="d-flex justify-content-start">
               <div className="align-self-center">
                 <MDBIcon
@@ -75,6 +88,7 @@ class Task extends Component {
                   onClick={this.checkTask.bind(this)}
                 />
               </div>
+
               <div className="flex-grow-1 p-3 text-wrap">
                 <h5 className="mb-1">{this.props.task.title}</h5>
               </div>
