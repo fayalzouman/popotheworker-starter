@@ -11,6 +11,7 @@ import {
   MDBModalFooter
 } from "mdbreact";
 import Select from "react-select";
+import "../../css/DatetimePicker.css";
 
 class CreateTaskForm extends Component {
   state = {
@@ -72,13 +73,7 @@ class CreateTaskForm extends Component {
               placeholder="Optional details"
               value={this.state.details}
             />
-            <Datetime
-              defaultValue="Optional Due Date"
-              value={this.state.due}
-              onChange={momentObj => {
-                this.setState({ due: momentObj });
-              }}
-            />
+
             <Select
               options={options}
               isMulti

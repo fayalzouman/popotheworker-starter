@@ -37,6 +37,7 @@ class TasksStore {
       ]
     }
   ];
+  todayTasks = [];
   doneTasks = [];
   futureTasks = [];
   labelOptions = ["Personal", "Work", "Monkey Stuff"];
